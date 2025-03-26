@@ -27,6 +27,23 @@ Current tools:
 - **`removeItem(key, removeMeta)`**
 - **`removeMeta(key)`**
 
+<br><br>
+
+- [Unstorage MCP Server](#unstorage-mcp-server)
+  - [install](#install)
+  - [args](#args)
+  - [environment variables](#environment-variables)
+    - [redis](#redis)
+    - [mongodb](#mongodb)
+    - [filesystem](#filesystem)
+    - [http server](#http-server)
+    - [memory](#memory)
+  - [extend guide](#extend-guide)
+    - [prompts for cursor/cline assisted programming](#prompts-for-cursorcline-assisted-programming)
+  - [debug approaches](#debug-approaches)
+    - [mcp-inspector](#mcp-inspector)
+    - [tsx mcpServer Config for local dev](#tsx-mcpserver-config-for-local-dev)
+
 ## install
 
 ```json

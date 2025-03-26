@@ -25,6 +25,23 @@ Current tools:
 - **`removeItem(key, removeMeta)`**
 - **`removeMeta(key)`**
 
+<br><br>
+
+- [Unstorage MCP server](#unstorage-mcp-server)
+  - [安装](#安装)
+  - [参数 (args)](#参数-args)
+  - [环境变量 (env)](#环境变量-env)
+    - [redis](#redis)
+    - [mongodb](#mongodb)
+    - [filesystem](#filesystem)
+    - [http server](#http-server)
+    - [memory](#memory)
+  - [扩展指南](#扩展指南)
+    - [用于 cursor/cline 辅助编程的提示词](#用于-cursorcline-辅助编程的提示词)
+  - [开发调试方法](#开发调试方法)
+    - [mcp-inspector](#mcp-inspector)
+    - [用于本地开发的 tsx mcpServer 配置](#用于本地开发的-tsx-mcpserver-配置)
+
 ## 安装
 
 ```json
