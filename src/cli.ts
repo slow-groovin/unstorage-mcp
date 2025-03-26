@@ -9,7 +9,7 @@ program.option(
   false
 );
 
-program.version("0.0.3");
+program.version("0.0.5");
 program.parse();
 
 const options = program.opts();

@@ -1,6 +1,8 @@
 # Unstorage MCP Server
 
-A Key-Value storage read/write/list MCP server based on [unstorage](https://github.com/unjs/unstorage).
+[中文 README](/README_ZH.md)
+
+A Key-Value storage MCP server based on [unjs/unstorage](https://github.com/unjs/unstorage).
 
 Current support drivers:
 
@@ -9,6 +11,21 @@ Current support drivers:
 3. redis
 4. unstorage http server
 5. mongodb
+
+Current tools:
+
+- **`showMounts()`**
+- **`getItem(key)`**
+- **`getItems(items)`**
+- **`getItemRaw(key)`**
+- **`getMeta(key, nativeOnly)`**
+- **`getKeys(base, maxDepth)`**
+- **`setItem(key, value)`**
+- **`setItems(items)`**
+- **`setItemRaw(key, value)`**
+- **`setMeta(key, meta)`**
+- **`removeItem(key, removeMeta)`**
+- **`removeMeta(key)`**
 
 ## install
 
@@ -22,13 +39,13 @@ Current support drivers:
         "REDIS_BASE": "my:mcp:values:",
         "REDIS_MOUNT_POINT": "redis_storage"
       },
-      "args": ["/y", "tsx", "--disable-modify"]
+      "args": ["/y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
     }
   }
 }
 ```
 
-_for Cline+Windows_
+_for Cline+Windows:_
 
 ```json
 {
@@ -40,7 +57,13 @@ _for Cline+Windows_
         "REDIS_BASE": "my:mcp:values:",
         "REDIS_MOUNT_POINT": "redis_storage"
       },
-      "args": ["/c", "npx", "/y", "tsx", "--disable-modify"]
+      "args": [
+        "/c",
+        "npx",
+        "/y",
+        "@slow-groovin/unstorage-mcp",
+        "--disable-modify"
+      ]
     }
   }
 }
@@ -48,9 +71,7 @@ _for Cline+Windows_
 
 If you have problem of installation on Windows, you can refrer to this [article](https://www.api2o.com/en/blog/windows-client-install-mcp-tutorial)
 
-## config
-
-### args
+## args
 
 **`--disable-modify`**
 
@@ -58,11 +79,11 @@ _Default: false_
 
 Disable tools with modify functionality like setItem, setItems ...
 
-### env
+## environment variables
 
 > for the concept of base and mountpoint, please refer to the [doc of unstorage](https://unstorage.unjs.io/guide)
 
-#### redis
+### redis
 
 _if **`REDIS_URL`** is set, a redis storage will be mounted_
 
@@ -72,7 +93,7 @@ _if **`REDIS_URL`** is set, a redis storage will be mounted_
 | **`REDIS_BASE`**        | base of redisDriver                                            |               | ✅       |
 | **`REDIS_MOUNT_POINT`** | mountpoint of this storage                                     | "/"           | ✅       |
 
-#### mongodb
+### mongodb
 
 _if **`MONGODB_URL`** is set, a mongodb storage will be mounted_
 
@@ -83,7 +104,7 @@ _if **`MONGODB_URL`** is set, a mongodb storage will be mounted_
 | **`MONGODB_COLLECTION_NAME`** | mongodb collection name, eg: `mycollection`              |               |          |
 | **`MONGODB_MOUNT_POINT`**     | mountpoint of this storage                               | "/"           | ✅       |
 
-#### filesystem
+### filesystem
 
 _if **`FS_BASE`** is set, a redis storage will be mounted_
 
@@ -92,7 +113,7 @@ _if **`FS_BASE`** is set, a redis storage will be mounted_
 | **`FS_BASE`**        | base of fsDriver, path of filesystem |               |          |
 | **`FS_MOUNT_POINT`** | mountpoint of this storage           | "/"           | ✅       |
 
-#### http server
+### http server
 
 _if **`HTTP_BASE`** is set, a http storage will be mounted_
 
@@ -120,7 +141,7 @@ If you are not a typescript developer, please submit a issue to ask for other dr
 3. You are only responsible for generating the code and do not need to perform testing.
 ```
 
-> If you dont have installed fetch MCP server, delete the first sentence
+> If you have not installed fetch MCP server, delete the first sentence
 
 ## debug approaches
 

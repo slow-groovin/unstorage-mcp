@@ -6,7 +6,7 @@ import { args } from "../cli.js";
 export const server = new McpServer(
   {
     name: "unstorage-mcp",
-    version: "0.0.3",
+    version: "0.0.5",
   },
   {
     capabilities: {

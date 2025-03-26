@@ -1,14 +1,29 @@
 # Unstorage MCP server
 
-基于 [unstorage](https://github.com/unjs/unstorage) 的键 Key-Value 存储 MCP 服务器。
+基于 [unstorage](https://github.com/unjs/unstorage) 的 Key-Value Storage MCP server.
 
-当前支持的驱动程序：
+当前支持的驱动：
 
 1. memory
 2. filesystem
 3. redis
 4. unstorage http server
 5. mongodb
+
+Current tools:
+
+- **`showMounts()`**
+- **`getItem(key)`**
+- **`getItems(items)`**
+- **`getItemRaw(key)`**
+- **`getMeta(key, nativeOnly)`**
+- **`getKeys(base, maxDepth)`**
+- **`setItem(key, value)`**
+- **`setItems(items)`**
+- **`setItemRaw(key, value)`**
+- **`setMeta(key, meta)`**
+- **`removeItem(key, removeMeta)`**
+- **`removeMeta(key)`**
 
 ## 安装
 
@@ -22,13 +37,13 @@
         "REDIS_BASE": "my:mcp:values:",
         "REDIS_MOUNT_POINT": "redis_storage"
       },
-      "args": ["/y", "tsx", "--disable-modify"]
+      "args": ["/y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
     }
   }
 }
 ```
 
-_Cline+Windows_
+_Cline+Windows:_
 
 ```json
 {
@@ -40,7 +55,13 @@ _Cline+Windows_
         "REDIS_BASE": "my:mcp:values:",
         "REDIS_MOUNT_POINT": "redis_storage"
       },
-      "args": ["/c", "npx", "/y", "tsx", "--disable-modify"]
+      "args": [
+        "/c",
+        "npx",
+        "/y",
+        "@slow-groovin/unstorage-mcp",
+        "--disable-modify"
+      ]
     }
   }
 }
@@ -48,9 +69,7 @@ _Cline+Windows_
 
 如果您在 Windows 安装过程中遇到问题，可以参考这篇[文章](https://www.api2o.com/zh/blog/windows-client-install-mcp-tutorial)
 
-## 配置
-
-### 参数 (args)
+## 参数 (args)
 
 **`--disable-modify`**
 
@@ -58,11 +77,11 @@ _默认值: false_
 
 禁用具有修改功能的 tools，例如 setItem, setItems ...
 
-### 环境变量 (env)
+## 环境变量 (env)
 
 > 关于 base 和 mountpoint 的概念，请参考 [unstorage 文档](https://unstorage.unjs.io/guide)
 
-#### redis
+### redis
 
 _如果设置了 **`REDIS_URL`**，将会挂载一个 redis 存储_
 
@@ -72,7 +91,7 @@ _如果设置了 **`REDIS_URL`**，将会挂载一个 redis 存储_
 | **`REDIS_BASE`**        | redisDriver 的 base                                           |        | ✅   |
 | **`REDIS_MOUNT_POINT`** | 挂载点                                                        | "/"    | ✅   |
 
-#### mongodb
+### mongodb
 
 _如果设置了 **`MONGODB_URL`**，将会挂载一个 mongodb 存储_
 
@@ -83,7 +102,7 @@ _如果设置了 **`MONGODB_URL`**，将会挂载一个 mongodb 存储_
 | **`MONGODB_COLLECTION_NAME`** | mongodb 集合名称，例如：`mycollection`                  |        |      |
 | **`MONGODB_MOUNT_POINT`**     | 挂载点                                                  | "/"    | ✅   |
 
-#### filesystem (文件系统)
+### filesystem
 
 _如果设置了 **`FS_BASE`**，将会挂载一个文件系统存储_
 
@@ -92,7 +111,7 @@ _如果设置了 **`FS_BASE`**，将会挂载一个文件系统存储_
 | **`FS_BASE`**        | fsDriver 的 base，文件系统的路径 |        |      |
 | **`FS_MOUNT_POINT`** | 挂载点                           | "/"    | ✅   |
 
-#### http server (http 服务器)
+### http server
 
 _如果设置了 **`HTTP_BASE`**，将会挂载一个 http 存储_
 
@@ -111,7 +130,7 @@ _如果设置了 **`HTTP_BASE`**，将会挂载一个 http 存储_
 
 如果您不是 TypeScript 开发人员，请提交一个 issue 来请求作者支持其他的 Driver。
 
-### 用于 cursor/cline 辅助编程的提示
+### 用于 cursor/cline 辅助编程的提示词
 
 ```text
 @/src/storage/mongodb.ts, 需要你为我实现这个代码
@@ -120,7 +139,7 @@ _如果设置了 **`HTTP_BASE`**，将会挂载一个 http 存储_
 3. 你仅负责生成代码而不需要测试
 ```
 
-## 调试方法
+## 开发调试方法
 
 ### mcp-inspector
 
