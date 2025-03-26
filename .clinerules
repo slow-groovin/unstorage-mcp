@@ -1,0 +1,7 @@
+## how to find the doc of a storage type?
+
+https://unstorage.unjs.io/drivers/<storage type>
+
+for example,
+vercel: https://unstorage.unjs.io/drivers/vercel
+mongodb: https://unstorage.unjs.io/drivers/mongodb
