@@ -123,6 +123,10 @@ _if **`HTTP_BASE`** is set, a http storage will be mounted_
 | **`HTTP_MOUNT_POINT`** | mountpoint of this storage                                      | "/"           | ✅       |
 | **`HTTP_HEADERS`**     | headers for http requests, eg: `Authorization=Bear 123;A=1;B=2` |               | ✅       |
 
+### memory
+
+If there is no mount on root("/"), a memory driver will be mounted automatically on "/" (same behaviour of unstorage).
+
 ## extend guide
 
 1. clone this repo

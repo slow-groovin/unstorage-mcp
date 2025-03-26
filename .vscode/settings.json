@@ -1,7 +1,0 @@
-{
-  "code-runner.executorMap": {
-    "typescript": "tsx"
-  },
-  "code-runner.saveAllFilesBeforeExecute": true,
-  "code-runner.runInTerminal": true
-}

@@ -121,6 +121,10 @@ _如果设置了 **`HTTP_BASE`**，将会挂载一个 http 存储_
 | **`HTTP_MOUNT_POINT`** | 挂载点                                                      | "/"    | ✅   |
 | **`HTTP_HEADERS`**     | http 请求的 headers，例如：`Authorization=Bear 123;A=1;B=2` |        | ✅   |
 
+### memory
+
+如果在根目录("/")没有挂载任何 driver，将自动在根目录("/")上挂载一个 memory driver（与 unstorage 的行为相同）。
+
 ## 扩展指南
 
 1. 克隆此仓库
