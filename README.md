@@ -31,6 +31,9 @@ Current tools:
 
 - [Unstorage MCP Server](#unstorage-mcp-server)
   - [install](#install)
+    - [minimal configuration](#minimal-configuration)
+    - [maximum configuration](#maximum-configuration)
+    - [_for Cline+Windows:_](#for-clinewindows)
   - [args](#args)
   - [environment variables](#environment-variables)
     - [redis](#redis)
@@ -46,6 +49,21 @@ Current tools:
 
 ## install
 
+### minimal configuration
+
+```json
+{
+  "mcpServers": {
+    "unstorage": {
+      "command": "npx",
+      "args": ["/y", "@slow-groovin/unstorage-mcp"]
+    }
+  }
+}
+```
+
+### maximum configuration
+
 ```json
 {
   "mcpServers": {
@@ -53,8 +71,17 @@ Current tools:
       "command": "npx",
       "env": {
         "REDIS_URL": "redis://default:123456@localhost:6379",
-        "REDIS_BASE": "my:mcp:values:",
-        "REDIS_MOUNT_POINT": "redis_storage"
+        "REDIS_BASE": "visits:date:api:",
+        "REDIS_MOUNT_POINT": "redis_storage",
+        "FS_BASE": "D:/tmp",
+        "FS_MOUNT_POINT": "fs_storage",
+        "HTTP_BASE": "http://localhost:3001",
+        "HTTP_MOUNT_POINT": "http_storage",
+        "HTTP_HEADERS": "Authorization=Bear 123;A=3;B=4;C=5",
+        "MONGODB_URL": "mongodb://root:123456@localhost:27017/",
+        "MONGODB_DB_NAME": "test",
+        "MONGODB_COLLECTION_NAME": "unstorage",
+        "MONGODB_MOUNT_POINT": "mongo_storage"
       },
       "args": ["/y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
     }
@@ -62,25 +89,14 @@ Current tools:
 }
 ```
 
-_for Cline+Windows:_
+### _for Cline+Windows:_
 
 ```json
 {
   "mcpServers": {
     "unstorage": {
       "command": "cmd",
-      "env": {
-        "REDIS_URL": "redis://default:123456@localhost:6379",
-        "REDIS_BASE": "my:mcp:values:",
-        "REDIS_MOUNT_POINT": "redis_storage"
-      },
-      "args": [
-        "/c",
-        "npx",
-        "/y",
-        "@slow-groovin/unstorage-mcp",
-        "--disable-modify"
-      ]
+      "args": ["/c", "npx", "/y", "@slow-groovin/unstorage-mcp"]
     }
   }
 }
