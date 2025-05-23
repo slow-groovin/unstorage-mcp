@@ -34,6 +34,7 @@ Current tools:
     - [minimal configuration](#minimal-configuration)
     - [maximum configuration](#maximum-configuration)
     - [_for Cline+Windows:_](#for-clinewindows)
+  - [Example **prompt** for use](#example-prompt-for-use)
   - [args](#args)
   - [environment variables](#environment-variables)
     - [redis](#redis)
@@ -56,7 +57,7 @@ Current tools:
   "mcpServers": {
     "unstorage": {
       "command": "npx",
-      "args": ["/y", "@slow-groovin/unstorage-mcp"]
+      "args": ["-y", "@slow-groovin/unstorage-mcp"]
     }
   }
 }
@@ -83,7 +84,7 @@ Current tools:
         "MONGODB_COLLECTION_NAME": "unstorage",
         "MONGODB_MOUNT_POINT": "mongo_storage"
       },
-      "args": ["/y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
+      "args": ["-y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
     }
   }
 }
@@ -96,13 +97,19 @@ Current tools:
   "mcpServers": {
     "unstorage": {
       "command": "cmd",
-      "args": ["/c", "npx", "/y", "@slow-groovin/unstorage-mcp"]
+      "args": ["/c", "npx", "-y", "@slow-groovin/unstorage-mcp"]
     }
   }
 }
 ```
 
 If you have problem of installation on Windows, you can refrer to this [article](https://www.api2o.com/en/blog/windows-client-install-mcp-tutorial)
+
+## Example **prompt** for use
+
+```text
+The process has produced a key-value result: "fs_base:recommend_site"="www.api2o.com", store it.
+```
 
 ## args
 

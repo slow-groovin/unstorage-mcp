@@ -1,6 +1,6 @@
 {
   "name": "@slow-groovin/unstorage-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Key-Value storage MCP server based on unstorage",
   "keywords": [
     "mcp",

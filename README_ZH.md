@@ -32,6 +32,7 @@ Current tools:
     - [最少配置](#最少配置)
     - [包含全部配置](#包含全部配置)
     - [_for Cline+Windows:_](#for-clinewindows)
+  - [使用示例 **提示词**](#使用示例-提示词)
   - [参数 (args)](#参数-args)
   - [环境变量 (env)](#环境变量-env)
     - [redis](#redis)
@@ -54,7 +55,7 @@ Current tools:
   "mcpServers": {
     "unstorage": {
       "command": "npx",
-      "args": ["/y", "@slow-groovin/unstorage-mcp"]
+      "args": ["-y", "@slow-groovin/unstorage-mcp"]
     }
   }
 }
@@ -81,7 +82,7 @@ Current tools:
         "MONGODB_COLLECTION_NAME": "unstorage",
         "MONGODB_MOUNT_POINT": "mongo_storage"
       },
-      "args": ["/y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
+      "args": ["-y", "@slow-groovin/unstorage-mcp", "--disable-modify"]
     }
   }
 }
@@ -94,13 +95,19 @@ Current tools:
   "mcpServers": {
     "unstorage": {
       "command": "cmd",
-      "args": ["/c", "npx", "/y", "@slow-groovin/unstorage-mcp"]
+      "args": ["/c", "npx", "-y", "@slow-groovin/unstorage-mcp"]
     }
   }
 }
 ```
 
 如果您在 Windows 安装过程中遇到问题，可以参考这篇[文章](https://www.api2o.com/zh/blog/windows-client-install-mcp-tutorial)
+
+## 使用示例 **提示词**
+
+```text
+过程产生了一个key-value结果: "fs_base:recommend_site"="www.api2o.com", 请将其存储.
+```
 
 ## 参数 (args)
 
