@@ -2,8 +2,13 @@
 
 基于 [unstorage](https://github.com/unjs/unstorage) 的 Key-Value Storage MCP server.
 
-当前支持的驱动：
+支持的 Transports:
+- [x] stdio
+- [x] Streamable HTTP
+- [x] SSE
 
+
+支持的 unstorage 驱动：
 1. memory
 2. filesystem
 3. redis
@@ -11,7 +16,6 @@
 5. mongodb
 
 Current tools:
-
 - **`showMounts()`**
 - **`getItem(key)`**
 - **`getItems(items)`**
@@ -28,10 +32,12 @@ Current tools:
 <br><br>
 
 - [Unstorage MCP server](#unstorage-mcp-server)
-  - [安装](#安装)
+  - [通过 stdio 方式安装运行](#通过-stdio-方式安装运行)
     - [最少配置](#最少配置)
     - [包含全部配置](#包含全部配置)
     - [_for Cline+Windows:_](#for-clinewindows)
+  - [通过 HTTP 方式安装运行](#通过-http-方式安装运行)
+  - [related arguments](#related-arguments)
   - [使用示例 **提示词**](#使用示例-提示词)
   - [参数 (args)](#参数-args)
   - [环境变量 (env)](#环境变量-env)
@@ -46,7 +52,7 @@ Current tools:
     - [mcp-inspector](#mcp-inspector)
     - [用于本地开发的 tsx mcpServer 配置](#用于本地开发的-tsx-mcpserver-配置)
 
-## 安装
+## 通过 stdio 方式安装运行
 
 ### 最少配置
 
@@ -103,6 +109,21 @@ Current tools:
 
 如果您在 Windows 安装过程中遇到问题，可以参考这篇[文章](https://www.api2o.com/zh/blog/windows-client-install-mcp-tutorial)
 
+## 通过 HTTP 方式安装运行
+
+```sh
+npx @slow-groovin/unstorage-mcp --http
+```
+## related arguments
+
+| arg        |                                        | default   |
+| ---------- | -------------------------------------- | --------- |
+| --http     | enable http transport instead of stdio | `false`   |
+| -p, --port | listening port                         | 3000      |
+| -h, --host | listening host                         | localhost |
+
+
+
 ## 使用示例 **提示词**
 
 ```text
@@ -121,6 +142,9 @@ _默认值: false_
 
 > 关于 base 和 mountpoint 的概念，请参考 [unstorage 文档](https://unstorage.unjs.io/guide)
 
+> 在终端中或`.env`文件中设置环境变量
+
+
 ### redis
 
 _如果设置了 **`REDIS_URL`**，将会挂载一个 redis 存储_
@@ -128,8 +152,8 @@ _如果设置了 **`REDIS_URL`**，将会挂载一个 redis 存储_
 | 语法                    | 描述                                                          | 默认值 | 可选 |
 | ----------------------- | ------------------------------------------------------------- | ------ | ---- |
 | **`REDIS_URL`**         | redis 连接 url，例如：`redis://default:123456@localhost:6379` |        |      |
-| **`REDIS_BASE`**        | redisDriver 的 base                                           |        | ✅   |
-| **`REDIS_MOUNT_POINT`** | 挂载点                                                        | "/"    | ✅   |
+| **`REDIS_BASE`**        | redisDriver 的 base                                           |        | ✅    |
+| **`REDIS_MOUNT_POINT`** | 挂载点                                                        | "/"    | ✅    |
 
 ### mongodb
 
@@ -140,7 +164,7 @@ _如果设置了 **`MONGODB_URL`**，将会挂载一个 mongodb 存储_
 | **`MONGODB_URL`**             | mongodb 连接 url，例如：`mongodb://user:pass@host:port` |        |      |
 | **`MONGODB_DB_NAME`**         | mongodb 数据库名称，例如：`test`                        |        |      |
 | **`MONGODB_COLLECTION_NAME`** | mongodb 集合名称，例如：`mycollection`                  |        |      |
-| **`MONGODB_MOUNT_POINT`**     | 挂载点                                                  | "/"    | ✅   |
+| **`MONGODB_MOUNT_POINT`**     | 挂载点                                                  | "/"    | ✅    |
 
 ### filesystem
 
@@ -149,7 +173,7 @@ _如果设置了 **`FS_BASE`**，将会挂载一个文件系统存储_
 | 语法                 | 描述                             | 默认值 | 可选 |
 | -------------------- | -------------------------------- | ------ | ---- |
 | **`FS_BASE`**        | fsDriver 的 base，文件系统的路径 |        |      |
-| **`FS_MOUNT_POINT`** | 挂载点                           | "/"    | ✅   |
+| **`FS_MOUNT_POINT`** | 挂载点                           | "/"    | ✅    |
 
 ### http server
 
@@ -158,8 +182,8 @@ _如果设置了 **`HTTP_BASE`**，将会挂载一个 http 存储_
 | 语法                   | 描述                                                        | 默认值 | 可选 |
 | ---------------------- | ----------------------------------------------------------- | ------ | ---- |
 | **`HTTP_BASE`**        | httpDriver 的 base，http 服务器的端点                       |        |      |
-| **`HTTP_MOUNT_POINT`** | 挂载点                                                      | "/"    | ✅   |
-| **`HTTP_HEADERS`**     | http 请求的 headers，例如：`Authorization=Bear 123;A=1;B=2` |        | ✅   |
+| **`HTTP_MOUNT_POINT`** | 挂载点                                                      | "/"    | ✅    |
+| **`HTTP_HEADERS`**     | http 请求的 headers，例如：`Authorization=Bear 123;A=1;B=2` |        | ✅    |
 
 ### memory
 

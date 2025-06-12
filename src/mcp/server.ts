@@ -6,7 +6,7 @@ import { args } from "../cli.js";
 export const server = new McpServer(
   {
     name: "unstorage-mcp",
-    version: "0.0.5",
+    version: args.version,
   },
   {
     capabilities: {
@@ -17,7 +17,7 @@ export const server = new McpServer(
 
 server.tool(
   "showMounts",
-  "Get an overview of all mount points. ( by storage.getMounts() )",
+  "Get an overview of all mount points. Returns a list of objects, each containing 'driverName' and 'base'.",
   async () => {
     const results = await storage.getMounts();
     const formatedResults = results.map((m) => ({
@@ -272,3 +272,27 @@ if (!args.disableModify) {
     }
   );
 }
+
+server.prompt('getItem',
+  () => ({
+    messages: [{
+      role: "user",
+      content: {
+        type: "text",
+        text: `Get the value of "fs_storage:val1" `
+      }
+    }]
+  })
+)
+
+server.prompt('setItem',
+  () => ({
+    messages: [{
+      role: "user",
+      content: {
+        type: "text",
+        text: `Set mongo_storage:dir2:type11:day7="alist has died." `
+      }
+    }]
+  })
+)
