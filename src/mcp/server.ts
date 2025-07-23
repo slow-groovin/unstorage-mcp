@@ -65,7 +65,7 @@ server.tool(
         data: e,
       });
     }
-    return { content: [{ type: "text", text: "13:" + value }] };
+    return { content: [{ type: "text", text: value }] };
   }
 );
 

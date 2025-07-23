@@ -27,7 +27,7 @@ program.option(
   "3000"
 )
 
-program.version("0.2.0");
+program.version("0.2.1");
 program.parse();
 
 const options = program.opts();
